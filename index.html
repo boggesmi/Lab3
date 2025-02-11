@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
-    /* Set the map container to take full viewport height and width */
+    /* Set the map container, adding a margin at the bottom */
     #map1 {
       height: 600px;
       margin-bottom:60px;
@@ -63,12 +63,10 @@
 
     // Function to compute the radius based on population
     function getRadius(population) {
-      // Here, the square root helps reduce extreme differences.
-      // Adjust the divisor (scaling factor) as needed based on your data.
       return Math.sqrt(population) / 40; 
     }
 
-    fetch('/data/uscities.geojson')
+    fetch('data/uscities.geojson')
     .then(function(response) {
         return response.json();
       })
@@ -104,7 +102,7 @@
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <!-- Include the GeoJSON data file (statesData.js) -->
-<script src="/data/us-states.js"></script>
+<script src="data/us-states.js"></script>
 <script>
   // Create the map and set the initial view centered on the US.
   var map2 = L.map('map2').setView([37.8, -96], 4);
